@@ -79,7 +79,7 @@ public class VentanaSchrodinger extends JFrame {
 
         // Listener para cuando se cierra la ventana con la "X"
         addWindowListener(new WindowAdapter() {
-            @Override
+            
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
             }

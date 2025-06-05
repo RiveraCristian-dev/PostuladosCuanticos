@@ -61,7 +61,7 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
 
         // Reabrir ventana principal al cerrar esta
         addWindowListener(new WindowAdapter() {
-            @Override
+            
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
             }

@@ -18,11 +18,13 @@ public class PostuladosCuanticos extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);
+        getContentPane().setBackground(new Color(30, 30, 30));//fondo obscuro
 
         // Título
         JLabel lblTitulo = new JLabel("POSTULADOS DE LA MECÁNICA CUÁNTICA", SwingConstants.CENTER);
         lblTitulo.setBounds(50, 20, 600, 30);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTitulo.setFont(new Font("Seogoe UI", Font.BOLD, 18));
+        lblTitulo.setForeground(Color.WHITE);
         add(lblTitulo);
 
         // Botones para cada postulado
@@ -41,13 +43,22 @@ public class PostuladosCuanticos extends JFrame implements ActionListener {
         ButtonGroup grupo = new ButtonGroup();
         grupo.add(rbTeoria);
         grupo.add(rbSimulacion);
+        
+        rbTeoria.setForeground(Color.WHITE);
+        rbSimulacion.setForeground(Color.WHITE);
+        rbTeoria.setBackground(new Color(30,30,30));
+        rbSimulacion.setBackground(new Color(30,30,30));
         add(rbTeoria);
         add(rbSimulacion);
 
         // Área de resultados
         lblResultado = new JLabel("Seleccione un postulado y un modo", SwingConstants.CENTER);
         lblResultado.setBounds(50, 240, 600, 200);
-        lblResultado.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        lblResultado.setFont(new Font("Seoge UI", Font.PLAIN, 13));
+        lblResultado.setForeground(Color.WHITE);
+        lblResultado.setBackground(new Color(40,40,40));
+        lblResultado.setOpaque(true);
+        lblResultado.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
         add(lblResultado);
     }
 
@@ -55,7 +66,20 @@ public class PostuladosCuanticos extends JFrame implements ActionListener {
     private JButton crearBoton(String texto, int x, int y, int ancho, int alto) {
         JButton boton = new JButton(texto);
         boton.setBounds(x, y, ancho, alto);
-        boton.setFont(new Font("Calibri", Font.PLAIN, 12));
+        boton.setFont(new Font("Seoge UI", Font.BOLD, 13));
+        boton.setBackground(new Color(60,60,60));
+        boton.setForeground(Color.WHITE);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
+        //efecto hover
+        boton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                boton.setBackground(new Color(90, 90, 90));
+            }
+            public void mouseExited(MouseEvent e) {
+                boton.setBackground(new Color(60,60,60));
+            }
+        });
         boton.addActionListener(this);
         add(boton);
         return boton;

@@ -56,7 +56,7 @@ public class VentanaDeBroglie extends JFrame implements ActionListener {
 
         // Evento para cuando se cierre la ventana (reabre la principal)
         addWindowListener(new WindowAdapter() {
-            @Override
+            
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
             }

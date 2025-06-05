@@ -58,7 +58,7 @@ public class VentanaPauli extends JFrame {
 
         // Evento al cerrar con la "X"
         addWindowListener(new WindowAdapter() {
-            @Override
+            
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
             }

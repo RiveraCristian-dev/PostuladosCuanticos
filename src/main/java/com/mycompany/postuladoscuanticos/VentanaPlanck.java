@@ -51,7 +51,7 @@ public class VentanaPlanck extends JFrame implements ActionListener {
         add(lblResultado);
         add(btnVolver);
 
-        // Acción al cerrar ventana
+        // Acción al cerrar ventana con x
         addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
