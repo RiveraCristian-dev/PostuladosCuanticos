@@ -43,7 +43,7 @@ public class VentanaPauli extends JFrame {
         panelConfig.add(lblEstados);
         panelConfig.add(spinnerEstados);
         panelConfig.add(btnCalcular);
-        panelConfig.add(new JLabel()); // espacio vacío
+        panelConfig.add(new JLabel()); 
 
         // Panel inferior con botón para volver
         JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.CENTER));

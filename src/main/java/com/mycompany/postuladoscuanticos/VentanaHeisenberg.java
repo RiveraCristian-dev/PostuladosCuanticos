@@ -12,7 +12,7 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
     private JLabel lblDeltaP, lblDeltaV;
     private JButton btnVolver;
 
-    // 🧱 Bloque 2: Constructor - interfaz gráfica 
+    // 🧱 Bloque 2: Constructor
     public VentanaHeisenberg() {
         setTitle("Principio de Incertidumbre de Heisenberg");
         setSize(450, 300);

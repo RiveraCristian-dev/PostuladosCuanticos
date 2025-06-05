@@ -13,10 +13,10 @@ public class VentanaDeBroglie extends JFrame implements ActionListener {
 
     // 🧱 Bloque 2: Constructor de la ventana 
     public VentanaDeBroglie() {
-        setTitle("Dualidad Onda-Partícula");           // Título de la ventana
-        setSize(400, 300);                             // Tamaño de la ventana
-        setLayout(null);                               // Layout absoluto (manual)
-        setLocationRelativeTo(null);                   // Centrar en pantalla
+        setTitle("Dualidad Onda-Partícula");               // Título de la ventana
+        setSize(400, 300);                                 // Tamaño de la ventana
+        setLayout(null);                                   // Layout absoluto (manual)
+        setLocationRelativeTo(null);                       // Centrar en pantalla
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra esta ventana sin terminar el programa
 
         // Etiqueta y campo de texto para masa
