@@ -1,6 +1,6 @@
 package com.mycompany.postuladoscuanticos;
 
-// Importación de librerías gráficas y eventos
+// Importación de librerías
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,46 +10,51 @@ import java.awt.event.*;
 public class VentanaHeisenberg extends JFrame implements ActionListener {
     private JTextField txtDeltaX, txtMasa;
     private JLabel lblDeltaP, lblDeltaV;
-    private JButton btnVolver;
+    private JButton btnVolver, btnCalcular;
 
-    // 🧱 Bloque 2: Constructor
+    // 🧱 Bloque 2: Constructor de la ventana
     public VentanaHeisenberg() {
         setTitle("Principio de Incertidumbre de Heisenberg");
         setSize(450, 300);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        getContentPane().setBackground(new Color(30, 30, 30));
 
         // Etiqueta y campo de texto para Δx (posición)
-        JLabel lblDeltaX = new JLabel("Δx (incertidumbre posición, nm):");
-        lblDeltaX.setBounds(30, 30, 200, 20);
+        JLabel lblDeltaX = new JLabel("Δx (posición, nm):");
+        lblDeltaX.setBounds(30, 30, 180, 20);
+        lblDeltaX.setForeground(Color.WHITE);
         txtDeltaX = new JTextField("0.1");
-        txtDeltaX.setBounds(240, 30, 100, 25);
+        txtDeltaX.setBounds(220, 30, 180, 25);
+        estilizarCampoTexto(txtDeltaX);
 
-        // Etiqueta y campo de texto para la masa
+        // Etiqueta y campo de texto para masa
         JLabel lblMasa = new JLabel("Masa (kg):");
-        lblMasa.setBounds(30, 70, 200, 20);
+        lblMasa.setBounds(30, 70, 180, 20);
+        lblMasa.setForeground(Color.WHITE);
         txtMasa = new JTextField("9.109e-31");
-        txtMasa.setBounds(240, 70, 100, 25);
+        txtMasa.setBounds(220, 70, 180, 25);
+        estilizarCampoTexto(txtMasa);
 
         // Botón para realizar el cálculo
-        JButton btnCalcular = new JButton("Calcular Incertidumbre");
-        btnCalcular.setBounds(120, 110, 200, 30);
+        btnCalcular = crearBotonConHover("Calcular Incertidumbre", 120, 110, 200, 30);
         btnCalcular.addActionListener(this);
 
-        // Etiquetas para mostrar resultados
+        // Etiquetas donde se mostrara el resultado
         lblDeltaP = new JLabel("Δp = ?");
-        lblDeltaP.setBounds(30, 150, 400, 20);
+        lblDeltaP.setBounds(30, 160, 380, 20);
+        estilizarEtiquetaResultado(lblDeltaP);
 
         lblDeltaV = new JLabel("Δv = ?");
-        lblDeltaV.setBounds(30, 180, 400, 20);
+        lblDeltaV.setBounds(30, 190, 380, 20);
+        estilizarEtiquetaResultado(lblDeltaV);
 
         // Botón para volver a la pantalla principal
-        btnVolver = new JButton("Volver");
-        btnVolver.setBounds(150, 220, 150, 30);
+        btnVolver = crearBotonConHover("Volver", 150, 230, 150, 30);
         btnVolver.addActionListener(e -> volverAPrincipal());
 
-        // Agregar todos los componentes a la ventana
+        // Agregar componentes a la ventana principal
         add(lblDeltaX);
         add(txtDeltaX);
         add(lblMasa);
@@ -59,7 +64,7 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
         add(lblDeltaV);
         add(btnVolver);
 
-        // Reabrir ventana principal al cerrar esta
+        // Si el usuario cierra la ventana con"X"
         addWindowListener(new WindowAdapter() {
             
             public void windowClosed(WindowEvent e) {
@@ -68,25 +73,66 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
         });
     }
 
-    // 🧱 Bloque 3: Método para calcular incertidumbres 
-    
+    // Estilizar campos de texto
+    private void estilizarCampoTexto(JTextField campo) {
+        campo.setBackground(new Color(50, 50, 50));
+        campo.setForeground(Color.WHITE);
+        campo.setCaretColor(Color.WHITE);
+        campo.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
+        campo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+    }
+
+    // Estilizar etiquetas de resultados
+    private void estilizarEtiquetaResultado(JLabel label) {
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        label.setOpaque(true);
+        label.setBackground(new Color(40, 40, 40));
+        label.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
+    }
+
+    // Botón con estilo y hover
+    private JButton crearBotonConHover(String texto, int x, int y, int ancho, int alto) {
+        JButton boton = new JButton(texto);
+        boton.setBounds(x, y, ancho, alto);
+        boton.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        boton.setBackground(new Color(60, 60, 60));
+        boton.setForeground(Color.WHITE);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
+
+        boton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                boton.setBackground(new Color(90, 90, 90));
+            }
+
+            public void mouseExited(MouseEvent e) {
+                boton.setBackground(new Color(60, 60, 60));
+            }
+        });
+
+        return boton;
+    }
+
+    // 🧱 Bloque 3: Método para calcular incertidumbres
     public void actionPerformed(ActionEvent e) {
         try {
-            double deltaX = Double.parseDouble(txtDeltaX.getText()) * 1e-9; // nm a metros
+            double deltaX = Double.parseDouble(txtDeltaX.getText()) * 1e-9;
             double masa = Double.parseDouble(txtMasa.getText());
 
-            double hbar = 1.0545718e-34; // Constante de Planck reducida (ħ)
+            double hbar = 1.0545718e-34; // Constante de Plank
             double deltaP = hbar / (2 * deltaX); // Δp ≥ ħ / 2Δx
-            double deltaV = deltaP / masa;      // Δv ≥ Δp / m
+            double deltaV = deltaP / masa; // Δv ≥ Δp / m
 
             lblDeltaP.setText(String.format("Δp ≥ %.3e kg·m/s", deltaP));
             lblDeltaV.setText(String.format("Δv ≥ %.3e m/s", deltaV));
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // 🧱 Bloque 4: Método para volver a la pantalla principal 
+    // 🧱 Bloque 4: Método para volver a la pantalla principal
     private void volverAPrincipal() {
         this.dispose();
         new PostuladosCuanticos().setVisible(true);
