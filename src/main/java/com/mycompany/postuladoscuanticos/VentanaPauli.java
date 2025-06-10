@@ -1,132 +1,92 @@
+// 🧱 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.*;                // Componentes de interfaz gráfica
+import java.awt.*;                   // Manejo de colores, fuentes, geometría
+import java.awt.event.*;             // Manejo de eventos
 
-// 🧱 Bloque 1: Definición de clase y atributos 
+//Ventana para demostrar el Principio de Exclusión de Pauli
+//Calcula las combinaciones posibles de fermiones en estados cuánticos
+//Implementa: C = estados! / (partículas! * (estados-partículas)
 public class VentanaPauli extends JFrame {
-    private JSpinner spinnerParticulas, spinnerEstados;
-    private JLabel lblResultado;
-    private JButton btnVolver, btnCalcular;
 
-    // 🧱 Bloque 2: Constructor de la ventanas
+    // 🧱 Bloque 2: Declaración de componentes
+    private JSpinner spinnerParticulas, spinnerEstados; // Selector para número de fermiones y estados disponibles
+    private JLabel lblResultado;                        // Etiqueta para mostrar resultados
+    private JButton btnVolver, btnCalcular;             // Botón para regresar al menú y realizar el cálculo
+ 
+    // 🧱 Bloque 3: Constructor de la ventana
     public VentanaPauli() {
         setTitle("Principio de Exclusión de Pauli");
-        setSize(500, 400);
-        setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        getContentPane().setBackground(new Color(30, 30, 30));
+        setSize(500, 400);                                 // Dimensiones (ancho, alto)
+        setLayout(null);                                   // Posicionamiento absoluto
+        setLocationRelativeTo(null);                       // Centrar ventana
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo esta ventana
+        EstilosSwing.aplicarFondoVentana(this);            // Aplicar estilo de fondo
 
-        // Panel principal con 3 filas, 2 columnas
-        JPanel panelConfig = new JPanel(new GridLayout(3, 2, 10, 10));
-        panelConfig.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panelConfig.setBackground(new Color(30, 30, 30));
-
-        // Componentes para entrada de datos
+        // 🧱 Bloque 4: Configuración de selectores (JSpinner)
+        // Selector para número de fermiones (1-10)
         JLabel lblParticulas = new JLabel("Número de fermiones:");
-        estilizarEtiqueta(lblParticulas);
-        spinnerParticulas = crearSpinnerEstilizado(2, 1, 10, 1);
+        lblParticulas.setBounds(50, 30, 150, 25);
+        EstilosSwing.estilizarLabel(lblParticulas, false);
+        add(lblParticulas);
 
+        spinnerParticulas = new JSpinner(new SpinnerNumberModel(2, 1, 10, 1));
+        spinnerParticulas.setBounds(220, 30, 60, 25);
+        EstilosSwing.estilizarSpinner(spinnerParticulas);
+        add(spinnerParticulas);
+
+        // Selector para estados disponibles (1-20)
         JLabel lblEstados = new JLabel("Estados disponibles:");
-        estilizarEtiqueta(lblEstados);
-        spinnerEstados = crearSpinnerEstilizado(4, 1, 20, 1);
+        lblEstados.setBounds(50, 70, 150, 25);
+        EstilosSwing.estilizarLabel(lblEstados, false);
+        add(lblEstados);
 
-        btnCalcular = crearBotonConHover("Calcular Combinaciones", null);
+        spinnerEstados = new JSpinner(new SpinnerNumberModel(4, 1, 20, 1));
+        spinnerEstados.setBounds(220, 70, 60, 25);
+        EstilosSwing.estilizarSpinner(spinnerEstados);
+        add(spinnerEstados);
+
+        // 🧱 Bloque 5: Configuración de botones
+        btnCalcular = EstilosSwing.crearBotonConHover("Calcular Combinaciones", 300, 50, 160, 30);
         btnCalcular.addActionListener(e -> calcularCombinaciones());
+        add(btnCalcular);
 
+        // 🧱 Bloque 6: Configuración del área de resultados
         lblResultado = new JLabel("", SwingConstants.CENTER);
-        estilizarResultado(lblResultado);
+        lblResultado.setBounds(50, 120, 410, 40);
+        EstilosSwing.estilizarLabelResultado(lblResultado);
+        add(lblResultado);
 
-        JPanel panelInferior = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelInferior.setBackground(new Color(30, 30, 30));
-        btnVolver = crearBotonConHover("Volver", new Dimension(120, 30));
+        // Botón Volver al menú principal
+        btnVolver = EstilosSwing.crearBotonConHover("Volver", 190, 320, 120, 30);
         btnVolver.addActionListener(e -> volverAPrincipal());
-        panelInferior.add(btnVolver);
+        add(btnVolver);
 
-        // Agrega componentes al panel
-        panelConfig.add(lblParticulas);
-        panelConfig.add(spinnerParticulas);
-        panelConfig.add(lblEstados);
-        panelConfig.add(spinnerEstados);
-        panelConfig.add(btnCalcular);
-        panelConfig.add(new JLabel());
-
-        add(panelConfig, BorderLayout.NORTH);
-        add(lblResultado, BorderLayout.CENTER);
-        add(panelInferior, BorderLayout.SOUTH);
-
-        // Evento al cerrar con la "X"
+        // 🧱 Bloque 7: Si el usuario cierra la ventana con"X"
         addWindowListener(new WindowAdapter() {
-            
             public void windowClosed(WindowEvent e) {
                 volverAPrincipal();
             }
         });
     }
 
-    private Font obtenerFuenteEstilo() {
-        return new Font("Segoe UI", Font.PLAIN, 13);
-    }
-
-    private void estilizarEtiqueta(JLabel label) {
-        label.setForeground(Color.WHITE);
-        label.setFont(obtenerFuenteEstilo());
-    }
-
-    private void estilizarResultado(JLabel label) {
-        label.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        label.setForeground(Color.WHITE);
-        label.setOpaque(true);
-        label.setBackground(new Color(40, 40, 40));
-        label.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
-    }
-
-    private JSpinner crearSpinnerEstilizado(int initial, int min, int max, int step) {
-        JSpinner spinner = new JSpinner(new SpinnerNumberModel(initial, min, max, step));
-        JComponent editor = spinner.getEditor();
-        JFormattedTextField field = ((JSpinner.DefaultEditor) editor).getTextField();
-        field.setBackground(new Color(50, 50, 50));
-        field.setForeground(Color.WHITE);
-        field.setCaretColor(Color.WHITE);
-        field.setFont(obtenerFuenteEstilo());
-        spinner.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100)));
-        return spinner;
-    }
-
-    private JButton crearBotonConHover(String texto, Dimension size) {
-        JButton boton = new JButton(texto);
-        boton.setFont(new Font("Segoe UI", Font.BOLD, 13));
-        boton.setBackground(new Color(60, 60, 60));
-        boton.setForeground(Color.WHITE);
-        boton.setFocusPainted(false);
-        boton.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
-        if (size != null) boton.setPreferredSize(size);
-
-        boton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                boton.setBackground(new Color(90, 90, 90));
-            }
-
-            public void mouseExited(MouseEvent e) {
-                boton.setBackground(new Color(60, 60, 60));
-            }
-        });
-
-        return boton;
-    }
-
+    // 🧱 Bloque 8: Método para calcular combinaciones
+    // Calcula las combinaciones posibles de fermiones en estados cuánticos
+    // según el principio de exclusión de Pauli (no dos fermiones idénticos pueden
+    // ocupar el mismo estado cuántico simultáneamente)
     private void calcularCombinaciones() {
         try {
             int particulas = (int) spinnerParticulas.getValue();
             int estados = (int) spinnerEstados.getValue();
 
+            // Validación: no puede haber más partículas que estados
             if (particulas > estados) {
                 lblResultado.setText("¡Error: Partículas > Estados!");
                 return;
             }
 
+            // Fórmula combinatoria: C = estados!/(partículas!(estados-partículas)!)
             int combinaciones = factorial(estados) / (factorial(particulas) * factorial(estados - particulas));
             lblResultado.setText("Configuraciones posibles: " + combinaciones);
         } catch (Exception ex) {
@@ -134,11 +94,13 @@ public class VentanaPauli extends JFrame {
         }
     }
 
+    // 🧱 Bloque 9: Método para volver al menú principal
     private void volverAPrincipal() {
         this.dispose();
         new PostuladosCuanticos().setVisible(true);
     }
 
+    // 🧱 Bloque 10: Método auxiliar para factorial
     private int factorial(int n) {
         return (n <= 1) ? 1 : n * factorial(n - 1);
     }
