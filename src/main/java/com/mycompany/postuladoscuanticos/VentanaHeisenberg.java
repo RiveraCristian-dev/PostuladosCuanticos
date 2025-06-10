@@ -11,9 +11,9 @@ import java.awt.event.*;         //Manejo de eventos (clicks)
 public class VentanaHeisenberg extends JFrame implements ActionListener {
     
     // 🧱 Bloque 2: Declaración de componentes
-    private JTextField txtDeltaX, txtMasa; //Campo para incertidumbre en posición (nm) y masa de la partícula(kg)
-    private JLabel lblDeltaP, lblDeltaV; //Etiqueta para mostrar momento y velocidad
-    private JButton btnVolver, btnCalcular; //Botón para regresar al menu y realizar el cálculo
+    private JTextField txtDeltaX, txtMasa;    //Campo para incertidumbre en posición (nm) y masa de la partícula(kg)
+    private JLabel lblDeltaP, lblDeltaV;      //Etiqueta para mostrar momento y velocidad
+    private JButton btnVolver, btnCalcular;   //Botón para regresar al menu y realizar el cálculo
 
     // 🧱 Bloque 3: Constructor de la ventana
     public VentanaHeisenberg() {

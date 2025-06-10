@@ -87,7 +87,7 @@ public class VentanaPlanck extends JFrame implements ActionListener {
             lblResultado.setText(String.format(
                 "<html>Radiancia espectral: <b>%.3e W/m²·Hz·sr</b><br>≈ %.3f kJ/m²·µm·sr</html>",
                 B, B * 1e-9));
-        } catch (NumberFormatException ex) { //Manejo de errores entrada no númerica
+        } catch (NumberFormatException ex) {  //Manejo de errores entrada no númerica
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }

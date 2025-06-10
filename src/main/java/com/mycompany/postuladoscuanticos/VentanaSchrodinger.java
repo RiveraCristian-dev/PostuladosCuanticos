@@ -85,7 +85,7 @@ public class VentanaSchrodinger extends JFrame {
         btnCalcular.addActionListener(e -> {
             try {
                 int n = (int) spinnerN.getValue();
-                double L = Double.parseDouble(txtL.getText()) * 1e-10;//Convertir A a m
+                double L = Double.parseDouble(txtL.getText()) * 1e-10; //Convertir A a m
                 double m = Double.parseDouble(txtMasa.getText());
 
                 double E = calcularEnergia(n, L, m);

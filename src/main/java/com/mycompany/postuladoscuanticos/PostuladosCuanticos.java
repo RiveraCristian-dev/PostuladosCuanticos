@@ -62,8 +62,8 @@ public class PostuladosCuanticos extends JFrame implements ActionListener {
 
         // 🧱 Bloque 7: Configuración del área de resultados
         lblResultado = new JLabel("Seleccione un postulado y un modo", SwingConstants.CENTER);
-        lblResultado.setBounds(50, 240, 600, 250);                    //Posición y tamaño
-        lblResultado.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); //Borde
+        lblResultado.setBounds(50, 240, 600, 250);                                 //Posición y tamaño
+        lblResultado.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));  //Borde
         lblResultado.setForeground(Color.WHITE);
         lblResultado.setFont(new Font("Seoge UI", Font.PLAIN, 13));
         add(lblResultado);

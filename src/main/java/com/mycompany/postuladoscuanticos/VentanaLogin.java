@@ -11,10 +11,10 @@ import java.awt.event.*;   // Manejo de eventos
 public class VentanaLogin extends JFrame {
 
     // 🔐 Bloque 2: Declaración de componentes y credenciales
-    private JTextField txtUsuario; // Campo para nombre de usuario
-    private JPasswordField txtContrasena; // Campo para contraseña (protegida)
-    private final String USUARIO_CORRECTO = "admin"; // Usuario
-    private final String CONTRASENA_CORRECTA = "2000"; // Contraseña
+    private JTextField txtUsuario;                        // Campo para nombre de usuario
+    private JPasswordField txtContrasena;                 // Campo para contraseña (protegida)
+    private final String USUARIO_CORRECTO = "admin";      // Usuario
+    private final String CONTRASENA_CORRECTA = "2000";    // Contraseña
 
     // 🔐 Bloque 3: Constructor de la ventana
     public VentanaLogin() {

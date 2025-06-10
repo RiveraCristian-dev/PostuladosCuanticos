@@ -21,7 +21,7 @@ public class VentanaDeBroglie extends JFrame implements ActionListener {
         setSize(400, 300);                       //Dimensiones(ancho, alto)
         setLayout(null);                         //Layout absoluto posicionamiento
         setLocationRelativeTo(null);             //Centrar ventana en pantalla 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Cierra solo esta ventana al salir
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);   //Cierra solo esta ventana al salir
         EstilosSwing.aplicarFondoVentana(this);              //Estilo constante de EstilosSwing
 
         // 🧱 Bloque 4 : Configuración de componentes para masa
