@@ -8,9 +8,9 @@ import java.awt.event.*;           //Manejo de eventos
 //Ventana para calcular la radiancia espectral según la Ley de Planck
 public class VentanaPlanck extends JFrame implements ActionListener {
     // 🧱 Bloque 2: Declaración de componentes
-    private JTextField txtFrecuencia, txtTemperatura; //Campo para la frecuencia (THz) y temperatura (K)
-    private JLabel lblResultado;                      //Etiqueta para mostrar resultados
-    private JButton btnVolver;                        //Botón para regresar al menú
+    private JTextField txtFrecuencia, txtTemperatura;  //Campo para la frecuencia (THz) y temperatura (K)
+    private JLabel lblResultado;                       //Etiqueta para mostrar resultados
+    private JButton btnVolver;                         //Botón para regresar al menú
 // 🧱 Bloque 3: Constructor de la ventana
     public VentanaPlanck() {
         setTitle("Ley de Planck - Cuerpo Negro");           //Titulo

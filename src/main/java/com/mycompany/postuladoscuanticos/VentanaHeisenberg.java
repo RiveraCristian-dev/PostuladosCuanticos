@@ -93,7 +93,7 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
             lblDeltaP.setText(String.format("Δp ≥ %.3e kg·m/s", deltaP));
             lblDeltaV.setText(String.format("Δv ≥ %.3e m/s ", deltaV));
         } catch (NumberFormatException ex) {
-            //Mensake de error de entrada no numérica
+            //Mensaje de error de entrada no numérica
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }

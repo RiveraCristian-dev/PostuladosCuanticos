@@ -8,10 +8,10 @@ import java.awt.event.*;    //Manejo de eventos (clicks)
 public class VentanaSchrodinger extends JFrame {
     
     // 🧱 Bloque 2: Declaración de componentes
-    private JSpinner spinnerN;               //Selector para número cuántico (n)
-    private JTextField txtL, txtMasa;        //Campo para la longitud de caja y masa de la partícula
-    private JTextArea txtResultado;          //Área para mostrar los resultados
-    private JButton btnVolver;               //Botón para volver al menú
+    private JSpinner spinnerN;                //Selector para número cuántico (n)
+    private JTextField txtL, txtMasa;         //Campo para la longitud de caja y masa de la partícula
+    private JTextArea txtResultado;           //Área para mostrar los resultados
+    private JButton btnVolver;                //Botón para volver al menú
 
     // 🧱 Bloque 3: Constructor de la ventana
     public VentanaSchrodinger() {

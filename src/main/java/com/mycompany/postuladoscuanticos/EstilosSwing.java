@@ -1,9 +1,9 @@
 // 🎨 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*;         // Componentes de interfaz gráfica
-import java.awt.*;            // Manejo de colores, fuentes, cursores
-import java.awt.event.*;      // Manejo de eventos de ratón
+import javax.swing.*;        // Componentes de interfaz gráfica
+import java.awt.*;           // Manejo de colores, fuentes, cursores
+import java.awt.event.*;     // Manejo de eventos de ratón
 
 //Clase utilitaria para aplicar estilos consistentes a componentes Swing
 //Proporciona métodos estáticos para estilizar ventanas, campos de texto,botones y otros componentes con un tema oscuro moderno.

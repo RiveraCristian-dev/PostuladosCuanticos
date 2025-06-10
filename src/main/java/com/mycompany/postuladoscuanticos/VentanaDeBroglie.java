@@ -44,7 +44,7 @@ public class VentanaDeBroglie extends JFrame implements ActionListener {
         // 🧱 Bloque 6 : Configuracion de botones
 
         btnCalcular = EstilosSwing.crearBotonConHover("Calcular λ", 150, 120, 100, 30);
-        btnCalcular.addActionListener(this); //Objeto que maneja el evento
+        btnCalcular.addActionListener(this);                //Objeto que maneja el evento
 
         // 🧱 Bloque 7 :Configuracion del área de resultados
         lblResultado = new JLabel("Resultado:"); 
@@ -84,10 +84,10 @@ public class VentanaDeBroglie extends JFrame implements ActionListener {
             //Obtención  y conversión de valores ingresados
             double masa = Double.parseDouble(txtMasa.getText());
             double velocidad = Double.parseDouble(txtVelocidad.getText());
-            double h = 6.626e-34;                    //Constante de Planck
+            double h = 6.626e-34;                   //Constante de Planck
             double lambda = h / (masa * velocidad); //Formula del cálculo
             lblResultado.setText(String.format("λ = %.3e m (%.3f nm)", lambda, lambda * 1e9)); //Muestra el resultado en metros y nanómetros
-        } catch (NumberFormatException ex) {     //Mensaje de error de entrada no númerica
+        } catch (NumberFormatException ex) {        //Mensaje de error de entrada no númerica
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }

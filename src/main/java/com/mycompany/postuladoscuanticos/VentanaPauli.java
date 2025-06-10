@@ -11,9 +11,9 @@ import java.awt.event.*;             // Manejo de eventos
 public class VentanaPauli extends JFrame {
 
     // 🧱 Bloque 2: Declaración de componentes
-    private JSpinner spinnerParticulas, spinnerEstados; // Selector para número de fermiones y estados disponibles
-    private JLabel lblResultado;                        // Etiqueta para mostrar resultados
-    private JButton btnVolver, btnCalcular;             // Botón para regresar al menú y realizar el cálculo
+    private JSpinner spinnerParticulas, spinnerEstados;  // Selector para número de fermiones y estados disponibles
+    private JLabel lblResultado;                         // Etiqueta para mostrar resultados
+    private JButton btnVolver, btnCalcular;              // Botón para regresar al menú y realizar el cálculo
  
     // 🧱 Bloque 3: Constructor de la ventana
     public VentanaPauli() {

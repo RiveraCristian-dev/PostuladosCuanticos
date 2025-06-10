@@ -98,9 +98,9 @@ public class PostuladosCuanticos extends JFrame implements ActionListener {
     // 🧱 Bloque 9: Manejo de eventos de los botones
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnSalir) {
-            System.exit(0);                     //Salir del programa
+            System.exit(0);                   //Salir del programa
         } else if (rbTeoria.isSelected()) {
-            mostrarTeoria(e.getSource()); //Mostrar Teoría del Postulado
+            mostrarTeoria(e.getSource());     //Mostrar Teoría del Postulado
         } else {
             iniciarSimulacion(e.getSource()); //Iniciar Simulación del postulado
         }

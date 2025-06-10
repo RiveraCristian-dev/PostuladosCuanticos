@@ -1,9 +1,9 @@
 // 🔐 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*; // Componentes de interfaz gráfica
-import java.awt.*; // Manejo de colores, fuentes, geometría
-import java.awt.event.*; // Manejo de eventos
+import javax.swing.*;      // Componentes de interfaz gráfica
+import java.awt.*;         // Manejo de colores, fuentes, geometría
+import java.awt.event.*;   // Manejo de eventos
 
 //Ventana de login para autenticar usuarios antes de acceder al simulador cuántico
 //Implementa verificación básica de credenciales con usuario y contraseña
