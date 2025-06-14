@@ -5,6 +5,13 @@
     <artifactId>PostuladosCuanticos</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>JSON</groupId>
+            <artifactId>JSON</artifactId>
+            <version>20240303</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>24</maven.compiler.release>

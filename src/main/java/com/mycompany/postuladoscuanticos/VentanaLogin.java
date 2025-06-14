@@ -1,77 +1,100 @@
-// 🔐 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*;      // Componentes de interfaz gráfica
-import java.awt.*;         // Manejo de colores, fuentes, geometría
-import java.awt.event.*;   // Manejo de eventos
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+import org.json.*;
 
-//Ventana de login para autenticar usuarios antes de acceder al simulador cuántico
-//Implementa verificación básica de credenciales con usuario y contraseña
+public class VentanaLogin extends JFrame implements ActionListener {
 
-public class VentanaLogin extends JFrame {
+    private JTextField txtUsuario;
+    private JPasswordField txtPassword;
+    private JButton btnIngresar;
 
-    // 🔐 Bloque 2: Declaración de componentes y credenciales
-    private JTextField txtUsuario;                        // Campo para nombre de usuario
-    private JPasswordField txtContrasena;                 // Campo para contraseña (protegida)
-    private final String USUARIO_CORRECTO = "admin";      // Usuario
-    private final String CONTRASENA_CORRECTA = "2000";    // Contraseña
-
-    // 🔐 Bloque 3: Constructor de la ventana
     public VentanaLogin() {
         setTitle("Iniciar Sesión");
-        setSize(350, 250); // Tamaño
-        setLayout(null); // Posicionamiento absoluto
-        setLocationRelativeTo(null); // Centrar ventana
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Cerrar aplicación al salir
-        EstilosSwing.aplicarFondoVentana(this); // Aplicar estilo oscuro
+        setSize(400, 250);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // 🔐 Bloque 4: Configuración del campo de usuario
+        // Etiqueta y campo usuario
         JLabel lblUsuario = new JLabel("Usuario:");
-        lblUsuario.setBounds(40, 40, 100, 25);
+        lblUsuario.setBounds(50, 30, 80, 25);
         EstilosSwing.estilizarLabel(lblUsuario, false);
         add(lblUsuario);
 
-        // Campo Usuario
         txtUsuario = new JTextField();
-        txtUsuario.setBounds(130, 40, 150, 25);
+        txtUsuario.setBounds(140, 30, 200, 25);
         EstilosSwing.estilizarCampoTexto(txtUsuario);
         add(txtUsuario);
 
-        // 🔐 Bloque 5: Configuración del campo de contraseña
-        JLabel lblContrasena = new JLabel("Contraseña:");
-        lblContrasena.setBounds(40, 80, 100, 25);
-        EstilosSwing.estilizarLabel(lblContrasena, false);
-        add(lblContrasena);
+        // Etiqueta y campo contraseña
+        JLabel lblPassword = new JLabel("Contraseña:");
+        lblPassword.setBounds(50, 70, 80, 25);
+        EstilosSwing.estilizarLabel(lblPassword, false);
+        add(lblPassword);
 
-        // Campo Contraseña
-        txtContrasena = new JPasswordField();
-        txtContrasena.setBounds(130, 80, 150, 25);
-        EstilosSwing.estilizarCampoTexto(txtContrasena);
-        add(txtContrasena);
+        txtPassword = new JPasswordField();
+        txtPassword.setBounds(140, 70, 200, 25);
+        EstilosSwing.estilizarCampoTexto(txtPassword);
+        add(txtPassword);
 
-        // 🔐 Bloque 6: Configuración del botón de login
-        JButton btnIngresar = EstilosSwing.crearBotonConHover("Iniciar sesión", 100, 130, 140, 30);
-        btnIngresar.addActionListener(e -> verificarCredenciales());
+        // Botón ingresar
+        btnIngresar = EstilosSwing.crearBotonConHover("Ingresar", 140, 120, 100, 30);
+        btnIngresar.addActionListener(this);
         add(btnIngresar);
+
+        EstilosSwing.aplicarFondoVentana(this);
+        setVisible(true);
     }
 
-    // 🔐 Bloque 7: Método para verificar credenciales
-    // Compara las credenciales ingresadas con las almacenadas
-    // Si son correctas, abre la ventana principal
-    // Si son incorrectas, muestra mensaje de error
-
-    private void verificarCredenciales() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
         String usuario = txtUsuario.getText();
-        String contrasena = new String(txtContrasena.getPassword()); // Convertir char[] a String
+        String password = new String(txtPassword.getPassword());
 
-        if (usuario.equals(USUARIO_CORRECTO) && contrasena.equals(CONTRASENA_CORRECTA)) {
-            // Éxito: abrir ventana principal (Credenciales correctas)
-            new PostuladosCuanticos().setVisible(true);
-            this.dispose(); // cerrar login
+        if (verificarLogin(usuario, password)) {
+            JOptionPane.showMessageDialog(this, "¡Bienvenido!");
+            dispose(); // cerrar la ventana de login
+            new PostuladosCuanticos().setVisible(true); // abrir ventana principal
         } else {
-            // Error (Credenciales incorrectas)
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos",
-                    "Error de acceso", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
         }
+    }
+
+    private boolean verificarLogin(String user, String pass) {
+        File archivo = new File("usuarios.json");
+        if (!archivo.exists())
+            return false;
+
+        try {
+            StringBuilder contenido = new StringBuilder();
+            BufferedReader br = new BufferedReader(new FileReader(archivo));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                contenido.append(linea);
+            }
+            br.close();
+
+            JSONArray usuarios = new JSONArray(contenido.toString());
+
+            for (int i = 0; i < usuarios.length(); i++) {
+                JSONObject obj = usuarios.getJSONObject(i);
+                if (obj.getString("usuario").equals(user) &&
+                        obj.getString("password").equals(pass)) {
+                    return true;
+                }
+            }
+
+        } catch (IOException | JSONException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        new VentanaLogin();
     }
 }

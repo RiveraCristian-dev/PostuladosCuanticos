@@ -1,9 +1,9 @@
 // 🎨 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*;        // Componentes de interfaz gráfica
-import java.awt.*;           // Manejo de colores, fuentes, cursores
-import java.awt.event.*;     // Manejo de eventos de ratón
+import javax.swing.*; // Componentes de interfaz gráfica
+import java.awt.*; // Manejo de colores, fuentes, cursores
+import java.awt.event.*; // Manejo de eventos de ratón
 
 //Clase utilitaria para aplicar estilos consistentes a componentes Swing
 //Proporciona métodos estáticos para estilizar ventanas, campos de texto,botones y otros componentes con un tema oscuro moderno.
@@ -21,13 +21,13 @@ public class EstilosSwing {
     // Estiliza campos de texto con fondo gris oscuro, texto blanco y bordes
 
     public static void estilizarCampoTexto(JTextField campo) {
-        campo.setBackground(new Color(50, 50, 50));                  // Fondo gris oscuro
-        campo.setForeground(Color.WHITE);                            // Texto blanco
-        campo.setCaretColor(Color.WHITE);                            // Cursor de texto blanco
+        campo.setBackground(new Color(50, 50, 50)); // Fondo gris oscuro
+        campo.setForeground(Color.WHITE); // Texto blanco
+        campo.setCaretColor(Color.WHITE); // Cursor de texto blanco
         campo.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(100, 100, 100)), // Borde exterior
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));       // Padding interno
-        campo.setFont(new Font("Segoe UI", Font.PLAIN, 13));         // Fuente
+                BorderFactory.createEmptyBorder(5, 5, 5, 5))); // Padding interno
+        campo.setFont(new Font("Segoe UI", Font.PLAIN, 13)); // Fuente
     }
 
     // 🎨 Bloque 4: Estilos para spinners (JSpinner)
@@ -53,23 +53,23 @@ public class EstilosSwing {
     // 🎨 Bloque 6: Creación de botones con efecto hover (el boton se ilumina)
     public static JButton crearBotonConHover(String texto, int x, int y, int ancho, int alto) {
         JButton boton = new JButton(texto);
-        boton.setBounds(x, y, ancho, alto);                                     // Posición y tamaño
-        boton.setFont(new Font("Segoe UI", Font.BOLD, 13));                     // Fuente negrita
-        boton.setBackground(new Color(60, 60, 60));                             // Color base
-        boton.setForeground(Color.WHITE);                                       // Texto blanco
-        boton.setFocusPainted(false);                                           // Elimina borde de enfoque
+        boton.setBounds(x, y, ancho, alto); // Posición y tamaño
+        boton.setFont(new Font("Segoe UI", Font.BOLD, 13)); // Fuente negrita
+        boton.setBackground(new Color(60, 60, 60)); // Color base
+        boton.setForeground(Color.WHITE); // Texto blanco
+        boton.setFocusPainted(false); // Elimina borde de enfoque
         boton.setBorder(BorderFactory.createLineBorder(new Color(150, 150, 150))); // Borde claro
 
         // Efecto hover - Cambia color y cursor al pasar el ratón
         boton.addMouseListener(new MouseAdapter() {
 
             public void mouseEntered(MouseEvent e) {
-                boton.setBackground(new Color(90, 90, 90));                      // Color más claro
+                boton.setBackground(new Color(90, 90, 90)); // Color más claro
                 boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Cursor de mano
             }
 
             public void mouseExited(MouseEvent e) {
-                boton.setBackground(new Color(60, 60, 60));                      // Vuelve al color original
+                boton.setBackground(new Color(60, 60, 60)); // Vuelve al color original
             }
         });
         return boton;
@@ -79,13 +79,13 @@ public class EstilosSwing {
     // Estiliza etiquetas con opción de fondo
 
     public static void estilizarLabel(JLabel label, boolean conFondo) {
-        label.setForeground(Color.WHITE);                                     // Texto blanco
+        label.setForeground(Color.WHITE); // Texto blanco
         if (conFondo) {
-            label.setBackground(new Color(40, 40, 40));                       // Fondo oscuro
-            label.setOpaque(true);                                            // Hace visible el fondo
+            label.setBackground(new Color(40, 40, 40)); // Fondo oscuro
+            label.setOpaque(true); // Hace visible el fondo
             label.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100))); // Borde
         }
-        label.setFont(new Font("Segoe UI", Font.PLAIN, 13));                  // Fuente estándar
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 13)); // Fuente estándar
     }
 
     // Estelización para etiquetas de resultado (siempre con fondo)
