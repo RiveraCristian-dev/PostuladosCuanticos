@@ -31,7 +31,7 @@ public class VentanaSchrodinger extends JFrame {
         
         //Spinner con valores de 1 a 10, incrementando de 1 en 1
         spinnerN = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
-        spinnerN.setBounds(190, 30, 50, 25);
+        spinnerN.setBounds(190, 30, 50, 30);
         EstilosSwing.estilizarSpinner(spinnerN);
         add(spinnerN);
 
