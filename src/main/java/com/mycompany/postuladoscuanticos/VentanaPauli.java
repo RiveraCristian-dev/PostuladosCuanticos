@@ -1,9 +1,9 @@
 // 🧱 Bloque 1: Declaración del paquete e imports
 package com.mycompany.postuladoscuanticos;
 
-import javax.swing.*;                // Componentes de interfaz gráfica
-import java.awt.*;                   // Manejo de colores, fuentes, geometría
-import java.awt.event.*;             // Manejo de eventos
+import javax.swing.*; // Componentes de interfaz gráfica
+import java.awt.*; // Manejo de colores, fuentes, geometría
+import java.awt.event.*; // Manejo de eventos
 
 //Ventana para demostrar el Principio de Exclusión de Pauli
 //Calcula las combinaciones posibles de fermiones en estados cuánticos
@@ -11,18 +11,18 @@ import java.awt.event.*;             // Manejo de eventos
 public class VentanaPauli extends JFrame {
 
     // 🧱 Bloque 2: Declaración de componentes
-    private JSpinner spinnerParticulas, spinnerEstados;   // Selector para número de fermiones y estados disponibles
-    private JLabel lblResultado;                          // Etiqueta para mostrar resultados
-    private JButton btnVolver, btnCalcular;               // Botón para regresar al menú y realizar el cálculo
- 
+    private JSpinner spinnerParticulas, spinnerEstados; // Selector para número de fermiones y estados disponibles
+    private JLabel lblResultado; // Etiqueta para mostrar resultados
+    private JButton btnVolver, btnCalcular; // Botón para regresar al menú y realizar el cálculo
+
     // 🧱 Bloque 3: Constructor de la ventana
     public VentanaPauli() {
         setTitle("Principio de Exclusión de Pauli");
-        setSize(500, 400);                                 // Dimensiones (ancho, alto)
-        setLayout(null);                                   // Posicionamiento absoluto
-        setLocationRelativeTo(null);                       // Centrar ventana
+        setSize(500, 400); // Dimensiones (ancho, alto)
+        setLayout(null); // Posicionamiento absoluto
+        setLocationRelativeTo(null); // Centrar ventana
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo esta ventana
-        EstilosSwing.aplicarFondoVentana(this);            // Aplicar estilo de fondo
+        EstilosSwing.aplicarFondoVentana(this); // Aplicar estilo de fondo
 
         // 🧱 Bloque 4: Configuración de selectores (JSpinner)
         // Selector para número de fermiones (1-10)
@@ -32,7 +32,7 @@ public class VentanaPauli extends JFrame {
         add(lblParticulas);
 
         spinnerParticulas = new JSpinner(new SpinnerNumberModel(2, 1, 10, 1));
-        spinnerParticulas.setBounds(220, 30, 60, 25);
+        spinnerParticulas.setBounds(220, 30, 60, 30);
         EstilosSwing.estilizarSpinner(spinnerParticulas);
         add(spinnerParticulas);
 
@@ -43,7 +43,7 @@ public class VentanaPauli extends JFrame {
         add(lblEstados);
 
         spinnerEstados = new JSpinner(new SpinnerNumberModel(4, 1, 20, 1));
-        spinnerEstados.setBounds(220, 70, 60, 25);
+        spinnerEstados.setBounds(220, 70, 60, 30);
         EstilosSwing.estilizarSpinner(spinnerEstados);
         add(spinnerEstados);
 
