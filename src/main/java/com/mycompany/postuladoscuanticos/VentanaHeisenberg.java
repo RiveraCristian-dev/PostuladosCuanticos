@@ -19,7 +19,7 @@ public class VentanaHeisenberg extends JFrame implements ActionListener {
     public VentanaHeisenberg() {
         //Configuración de la ventana
         setTitle("Principio de Incertidumbre de Heisenberg");
-        setSize(450, 300);                                     //Dimenciones (ancho, alto)
+        setSize(450, 320);                                     //Dimenciones (ancho, alto)
         setLayout(null);                                       //Layout absoluto posicionamiento
         setLocationRelativeTo(null);                           //Centrar ventana
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);     //Cierra la ventana

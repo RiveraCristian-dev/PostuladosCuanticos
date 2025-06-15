@@ -18,7 +18,7 @@ public class VentanaPauli extends JFrame {
     // 🧱 Bloque 3: Constructor de la ventana
     public VentanaPauli() {
         setTitle("Principio de Exclusión de Pauli");
-        setSize(500, 400); // Dimensiones (ancho, alto)
+        setSize(500, 300); // Dimensiones (ancho, alto)
         setLayout(null); // Posicionamiento absoluto
         setLocationRelativeTo(null); // Centrar ventana
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo esta ventana
@@ -59,7 +59,7 @@ public class VentanaPauli extends JFrame {
         add(lblResultado);
 
         // Botón Volver al menú principal
-        btnVolver = EstilosSwing.crearBotonConHover("Volver", 190, 320, 120, 30);
+        btnVolver = EstilosSwing.crearBotonConHover("Volver", 190, 210, 120, 30);
         btnVolver.addActionListener(e -> volverAPrincipal());
         add(btnVolver);
 
